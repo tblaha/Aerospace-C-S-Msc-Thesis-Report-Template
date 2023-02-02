@@ -1,0 +1,85 @@
+\chapter{Introduction}
+\label{chapter:intro}
+
+\section{Template description}
+
+This template is made for thesis reports that require a scientific article to be part of the deliverable.
+Create a standalone scientific article as a \texttt{PDF} and include it as Chapter 2.
+
+The file \texttt{notation.tex} defines notation macros that are common in your thesis. For example, the expectation operator using \texttt{\textbackslash E}:
+
+\begin{equation}
+\E[\pi]{\sum_{t}^{\infty} \x_t}
+\end{equation}
+
+The file \texttt{styling.tex} defines official TU Delft colors, and uses primary, secondary and accent definitions to keep the color scheme consistent.
+It also defines \texttt{tikz} styles for each shaded and non-shaded blocks for illustration.
+
+Use XeLatex/LuaLatex to compile.
+
+\section{Examples}
+
+Here are a few example citations, for example the PDF: \cite{einstein1905electrodynamics}. Also \cite{mnih2015human}.
+
+A figure with inserted \texttt{PNG} is shown in \cref{fig:example}.
+In order to make nice tables, use booktabs and avoid vertical lines, as shown in \cref{tab:example}.
+Add illustrations using tikz as shown in \cref{fig:fig_tikz}.
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.4\textwidth]{figures/placeholder_black.png}
+    \caption{This is an example figure}
+    \label{fig:example}
+\end{figure}
+
+\begin{table}[ht]
+    \centering
+    \caption{Example clean table}
+    \label{tab:example}
+    \begin{tabular}{@{}ccc@{}}
+    \toprule
+    Altitude & $1,000 (m)$ & $2,000 (m)$ \\
+    \midrule
+    P &  0.2  & 0.4  \\ 
+    I &  0.01 & 0.02 \\
+    D &  0.4  & 0.5  \\
+    \bottomrule
+    \end{tabular}
+\end{table}
+
+\begin{figure}[ht]
+    \centering
+    \begin{tikzpicture}
+        \node[block-primary] (ac) at (0, 0) {Aircraft};
+        \node[shaded-primary] (co) at (-6, 0) {Controller};
+
+        \draw[line] (co) -- node [midway, above] {u} (ac);
+        \draw[line] (ac) to++ (0, -2) -| node [pos=0.25, below] {x} (co);
+        
+    \end{tikzpicture}
+    \caption{This is an example tikz illustration.}
+    \label{fig:fig_tikz}
+\end{figure}
+
+\newpage
+\section{Research Formulation}
+\label{section:intro-reseach-questions}
+
+A few macros are defined to show the research questions and research objective in a box:
+
+\ResearchObjective{The primary objective of this research project is to graduate.}
+
+\ResearchQuestion{1}{What state-of-the-art methods are most suitable for XXX ?}
+
+You can refer to your research question as: RQ \ref{rq:1}, which should generate a hyperlink.
+
+\section{Structure of the Report}
+\label{section:intro-report-structure}
+
+% Scope
+The purpose of this report is to (...)
+
+% Structure of the paper
+The structure of the report is as follows.
+Firstly, \cref{chapter:article} shows Einstein's 1905 paper about special relativity as an example inserted standalone article pdf, in \cref{part:article}.
+Then,(...)

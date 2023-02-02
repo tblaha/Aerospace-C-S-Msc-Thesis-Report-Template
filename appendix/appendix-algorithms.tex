@@ -1,0 +1,40 @@
+\chapter{Algorithms}
+\label{appendix:algorithms}
+
+This appendix contains an example algorithm.
+\setlength{\textfloatsep}{6pt}
+
+\newcommand{\hh}{\hspace*{3pt}}
+
+\SetKwInput{KwInit}{Init}
+\SetKwInput{KwHyper}{Hyperparameters}
+
+\IncMargin{0.25em}
+\begin{algorithm}[ht]
+\DontPrintSemicolon
+\caption{On-policy Monte-Carlo control}\label{alg:MC-control}
+
+\KwInit{$\M = \tuple{\S, \A, \P, \R, \gamma}, Q(s, a)$}
+\KwHyper{$K$}
+\KwResult{$\pi(s)$}
+
+\For{episode $k \leftarrow 1$ \KwTo $K$}{
+    
+    \hh
+    
+    \emph{sample $t \in [0, T]$ transitions during episode $k$ using policy $\pi$}\;
+    
+    $\TT_k \leftarrow \set{S_t, A_t, R_{t+1}, \cdots, R_{T}}_{\pi} \sim \M$\;
+    
+    \For{$\tuple{a, s} \in \TT_k$}{
+        $N(s, a) \leftarrow N(s, a) + 1$\;
+        $Q(s, a) \leftarrow Q(s, a) + \frac{1}{N(s, a)} \left( G_t - Q(s, a) \right)$\;
+    }
+
+    \hh
+    
+    \emph{improve policy using updated action-value function}\;
+    $\epsilon \leftarrow \frac{1}{k}$\;
+    $\pi \leftarrow \epsgreedy{q}$\;
+}
+\end{algorithm}

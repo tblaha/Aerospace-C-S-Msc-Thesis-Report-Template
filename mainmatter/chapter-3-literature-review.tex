@@ -1,0 +1,34 @@
+\chapter{Literature Review}
+\label{chapter:lit_review}
+
+% Leveldown and levelup commands allow to re-use chapters from the literature review but with different section levels.
+
+\newenvironment{leveldown}% Demote sectional commands
+  {\let\chapter\section
+   \let\section\subsection%
+   \let\subsection\subsubsection%
+   \let\subsubsection\paragraph%
+  }{}
+  
+\newenvironment{levelup}% Promote sectional commands
+  {\let\subparagraph\paragraph%
+   \let\paragraph\subsubsection%
+   \let\subsubsection\subsection%
+   \let\subsection\section%
+   \let\section\chapter
+}{}
+
+\begin{leveldown}
+
+\chapter{Lit Review Chapter 1}
+
+\newpage
+\chapter{Lit Review Chapter 2}
+
+\newpage
+\chapter{Lit Review Chapter 3}
+
+\newpage
+\chapter{Lit Review Chapter 4}
+
+\end{leveldown}
