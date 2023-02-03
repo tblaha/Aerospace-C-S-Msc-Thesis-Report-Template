@@ -1,6 +1,19 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{layout/tudelft-report}[18-11-2022 v1.0 TU Delft C&S MSc Report Class]
-\LoadClass[10pt, oneside]{book}
+\ProvidesClass{layout/tudelft-report}[18-11-2022 v1.1 TU Delft C&S MSc Report Class]
+
+% Additions by Till Blaha. 2023-02-03
+% 
+% deal with "print option" such that title-page/toc/introduction and part-pages are always on the right (on odd pages)
+\newif\ifprintformatting\printformattingfalse
+\DeclareOption{print}{\printformattingtrue}
+\ProcessOptions
+
+\ifprintformatting
+    \LoadClass[10pt, twoside, openany]{book}
+    % openany means that \cleardoublepage still needs to be used to get parts/toc/etc. correft
+\else
+    \LoadClass[10pt, oneside]{book}
+\fi
 
 %% Main packages in the document
 \RequirePackage{amsmath}                % Mathematics
@@ -76,11 +89,27 @@
 }
 
 %% Set up page geometry and margins
-\geometry{
-    a4paper,
-    hscale=0.77,
-    vscale=0.8
-}
+\ifprintformatting
+    \geometry{
+        a4paper,
+        outer=20mm,
+        inner=28mm,
+        top=23mm,
+        bottom=36.5mm
+    }
+\else
+    %\geometry{
+    %    a4paper,
+    %    left=0.77,
+    %    vscale=0.8
+    %}
+    \geometry{ % should be equivalent to the commented out version
+        left=24mm,
+        right=24mm,
+        top=23mm,
+        bottom=36.5mm
+    }
+\fi
 
 % Colors and tikz styles
 \input{styling.tex}
