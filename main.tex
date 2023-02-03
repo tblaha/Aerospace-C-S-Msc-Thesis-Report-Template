@@ -1,13 +1,14 @@
 % use the "print" option to consider the following optimisation for a booklet
-% 1. inside margin is 8mm larger than the outside margin to take into account the glue bind (total textwidth stays the same)
-% 2. Front matter contains empty pages if necessary to put titlepage/preface/toc and introduction on right-hand (odd) pages. All other chapters remain unaffected
-% 3. new Parts start on right-hand (odd) pages. All remaining Chapters/Sections are unaffected
-% 4. Scientific article starts on an odd page, so page numbers remain odd-right
+% 1. inside margin is 8mm larger than the outside margin to take into account the bind on the inside (total textwidth stays the same, imported pdf is unaffected)
+% 2. all text on the coverpage is moved 10mm to the right to account for the white glue bind overlap ontop of the cover (total text width stays the same)
+% 3. Front matter contains empty pages if necessary to put titlepage/preface/toc and introduction on right-hand (odd) pages. All other chapters remain unaffected
+% 4. new Parts start on right-hand (odd) pages. All remaining Chapters/Sections are unaffected
+% 5. Scientific article starts on an odd page, so page numbers remain odd-right
 %
 % Note: \cleardoublepage is equivalent to \clearpage if option "print" is NOT passed
 %
 % !!! it remains the user's responsibility to check all of the ordering/layout before printing !!!
-%
+
 %\documentclass{layout/tudelft-report} % no empty pages. Equal margins
 \documentclass[print]{layout/tudelft-report} % possibly empty pages for correct 2-sided layouts. Unequal marings to consider bind on the inside
 
