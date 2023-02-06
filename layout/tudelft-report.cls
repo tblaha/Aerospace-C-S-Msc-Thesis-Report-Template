@@ -1,5 +1,5 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{layout/tudelft-report}[18-11-2022 v1.1 TU Delft C&S MSc Report Class]
+\ProvidesClass{layout/tudelft-report}[06-02-2023 v1.1 TU Delft C&S MSc Report Class]
 
 % Additions by Till Blaha. 2023-02-03
 % 
