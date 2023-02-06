@@ -5,6 +5,12 @@
 \definecolor{backgroundColor}{HTML}{23395d}
 \definecolor{bannerColor}{HTML}{1B262C}
 
+\ifprintformatting
+\newcommand{\bindmargin}{10mm}
+\else
+\newcommand{\bindmargin}{0mm}
+\fi
+
 % Banner parameters
 \def\bannerOpacity{0.9}
 \def\bannerWidth{0.8}
@@ -43,20 +49,23 @@
         
         % More graphics
         \node[below=-3cm] at (current page.center) {
+            \hspace*{\bindmargin}% space for bind margin, if print option is passed
             \includegraphics[width=\textwidth]{figures/placeholder_white.png}
         };
 
         % Add the logo in the bottom left
         \node[above right=10mm] at (current page.south west) {%
+            \hspace*{\bindmargin}% space for bind margin, if print option is passed
             \includegraphics[width=0.35\linewidth]{layout/tudelft/logo-white.pdf}};
 
         % Add the banner with the title, subtitle, subject and author(s)
         \node[banner] at (current page.north) {%
         
-            \begin{minipage}{0.8\paperwidth}
+            \hspace*{\bindmargin}% space for bind margin, if print option is passed
+            \begin{minipage}{0.75\paperwidth}
                 % [0.5ex]
                 %% Format and add the title
-                \color{title}\raggedright\largetitlestyle\fontsize{50}{50}\selectfont%
+                \color{title}\raggedright\largetitlestyle\fontsize{45}{45}\selectfont%
                     \@title \\[0.5ex]
                 %% Format and add (optional) subtitle and subject
                 \color{white}\titlestyle\fontsize{22}{22}\selectfont%
@@ -68,5 +77,4 @@
             \end{minipage}};
 
     \end{tikzpicture}
-    \newpage
 }
